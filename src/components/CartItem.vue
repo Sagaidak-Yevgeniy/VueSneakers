@@ -1,10 +1,27 @@
+<script setup>
+// Определение свойств компонента
+defineProps({
+  id: Number, // Уникальный идентификатор товара (число)
+  title: String, // Название товара (строка)
+  price: Number, // Цена товара (число)
+  imageUrl: String // URL изображения товара (строка)
+})
+</script>
+
 <template>
+  <!-- Внешний контейнер товара -->
   <div class="relative flex w-full border border-slate-100 rounded-xl p-4 gap-4">
-    <img src="/sneakers/sneakers-1.jpg" class="w-16 h-16" alt="Sneaker" />
+    <!-- Изображение товара -->
+    <img :src="imageUrl" class="w-16 h-16" :alt="title" />
+    <!-- Контейнер для текстовой информации о товаре -->
     <div class="flex flex-col w-full">
-      <p>Кроссовки женские</p>
+      <!-- Название товара -->
+      <p>{{ title }}</p>
+      <!-- Контейнер для цены и кнопки "Закрыть" -->
       <div class="flex justify-between mt-5">
-        <span class="font-bold">120 000 тенге</span>
+        <!-- Цена товара -->
+        <span class="font-bold">{{ price }} тенге</span>
+        <!-- Изображение кнопки "Закрыть" -->
         <img
           class="cursor-pointer opacity-30 hover:opacity-100 transition"
           src="/close.svg"
