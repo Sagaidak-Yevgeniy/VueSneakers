@@ -14,7 +14,7 @@ const emit = defineEmits(['addToFavorite', 'addToCart'])
 
 <template>
   <!-- Обертка для карточек, используется сетка с четырьмя колонками -->
-  <div class="grid grid-cols-4 gap-5">
+  <div class="grid grid-cols-4 gap-5" v-auto-animate>
     <!-- Используем компонент Card для отображения каждого элемента в массиве items -->
     <Card
       v-for="item in items"

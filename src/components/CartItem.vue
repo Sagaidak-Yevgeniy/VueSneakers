@@ -1,5 +1,5 @@
 <script setup>
-// Определение свойств компонента
+const emit = defineEmits(['onClickRemove'])
 defineProps({
   id: Number, // Уникальный идентификатор товара (число)
   title: String, // Название товара (строка)
@@ -23,6 +23,7 @@ defineProps({
         <span class="font-bold">{{ price }} тенге</span>
         <!-- Изображение кнопки "Закрыть" -->
         <img
+          @click="emit('onClickRemove')"
           class="cursor-pointer opacity-30 hover:opacity-100 transition"
           src="/close.svg"
           alt="Close"

@@ -11,8 +11,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@formkit/auto-animate": "^0.8.2",
     "axios": "^1.6.8",
-    "vue": "^3.4.21"
+    "lodash.debounce": "^4.0.8",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.2"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
