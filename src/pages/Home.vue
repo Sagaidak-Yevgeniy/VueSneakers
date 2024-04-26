@@ -16,13 +16,10 @@ const filters = reactive({
 
 const onClickaddToPlus = (item) => {
   if (!item.isAdded) {
-
     addToCart(item)
   } else {
-
     removeFromCart(item)
   }
- 
 }
 
 const onChangeSelect = (event) => {

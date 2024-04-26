@@ -4,14 +4,12 @@ import Header from './components/Header.vue' // Импорт компонент�
 import Drawer from './components/Drawer.vue' // Импорт компонента выдвижного меню
 import { watch, provide, ref, computed } from 'vue' // Импорт необходимых функций и хуков из Vue
 
-
 /*Корзина START*/
 const cart = ref([])
 
 const drawerVisible = ref(false)
 
 const totalPrice = computed(() => cart.value.reduce((sum, item) => sum + item.price, 0))
-
 
 const vatPrice = computed(() => Math.round((totalPrice.value * 5) / 100))
 
@@ -28,7 +26,6 @@ const removeFromCart = (item) => {
   cart.value.splice(cart.value.indexOf(item), 1)
   item.isAdded = false // Удаляем элемент из корзины
 }
-
 
 watch(
   cart,
@@ -47,24 +44,16 @@ provide('cart', {
   totalPrice
 })
 /*Корзина END*/
-
-
-
 </script>
 
 <template>
-  <Drawer
-    v-if="drawerVisible"
-    :total-price="totalPrice"
-    :vat-price="vatPrice"
-    
-  />
- 
+  <Drawer v-if="drawerVisible" :total-price="totalPrice" :vat-price="vatPrice" />
+
   <div class="bg-white w-4/5 m-auto rounded-xl shadow-xl mt-14">
     <Header :total-price="totalPrice" @toggle-drawer="toggleDrawer" />
-    
+
     <div class="p-10">
-        <RouterView />
+      <RouterView />
     </div>
   </div>
 </template>

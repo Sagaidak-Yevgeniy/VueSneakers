@@ -25,10 +25,10 @@ const createOrder = async () => {
     isCreatedOrder.value = true
     const { data } = await axios.post('https://c62d441103464330.mokky.dev/orders', {
       items: cart.value,
-      totalPrice: props.totalPrice.value
+      totalPrice: props.totalPrice
     })
     cart.value = []
-
+   
     orderId.value = data.id
   } catch (e) {
     console.log(e)
@@ -45,41 +45,41 @@ const createOrder = async () => {
     <DrawerHeader />
     <div v-if="!totalPrice || orderId" class="flex h-full items-center">
       <InfoBlock
-      v-if="!totalPrice && !orderId"
+        v-if="!totalPrice && !orderId"
         title="Корзина пуста"
         description="Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ"
         imageUrl="/package-icon.png"
       />
       <InfoBlock
-      v-if="orderId"
+        v-if="orderId"
         title="Заказ оформлен"
         :description="`Ваш заказ № ${orderId} успешно оформлен и будет передан курьерской службе`"
         imageUrl="/order-success-icon.png"
       />
     </div>
     <div v-else>
-        <CartListItem />
+      <CartListItem />
 
-        <div v-if="totalPrice" class="flex flex-col gap-4 mt-8">
+      <div v-if="totalPrice" class="flex flex-col gap-4 mt-8">
         <div class="flex gap-2">
-            <span>ИТОГО:</span>
-            <div class="flex-1 border-b border-dashed"></div>
-            <b>{{ totalPrice }} тенге</b>
+          <span>ИТОГО:</span>
+          <div class="flex-1 border-b border-dashed"></div>
+          <b>{{ totalPrice }} тенге</b>
         </div>
         <div class="flex gap-2">
-            <span>Налог 5%:</span>
-            <div class="flex-1 border-b border-dashed"></div>
-            <b>{{ vatPrice }} тенге</b>
+          <span>Налог 5%:</span>
+          <div class="flex-1 border-b border-dashed"></div>
+          <b>{{ vatPrice }} тенге</b>
         </div>
 
         <button
-            :disabled="btnDisable"
-            @click="createOrder"
-            class="mt-4 transition bg-lime-500 w-full rounded-xl py-3 text-white disabled:bg-slate-300 cursor-pointer hover:bg-lime-600 active:bg-lime-700"
+          :disabled="btnDisable"
+          @click="createOrder"
+          class="mt-4 transition bg-lime-500 w-full rounded-xl py-3 text-white disabled:bg-slate-300 cursor-pointer hover:bg-lime-600 active:bg-lime-700"
         >
-            Оформить заказ
+          Оформить заказ
         </button>
-        </div>
+      </div>
     </div>
   </div>
 </template>
